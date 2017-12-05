@@ -23,7 +23,7 @@ function EpsonProjector(log, config) {
     this.ip = config["ip"];
     this.model = config["model"] === undefined ? "" : config["model"];
     this.serial = config["serial"] === undefined ? "" : config["serial"];
-    this.name = config["name"] === config["name"];
+    this.name = config["name"];
 }
 
 EpsonProjector.prototype = {
@@ -86,10 +86,11 @@ EpsonProjector.prototype = {
         switchService = new Service.Switch(this.name);
         switchService
             .getCharacteristic(Characteristic.On)
-            .on('get', this.getPowerState.bind(this))
-            .on('set', this.setPowerState.bind(this));
+                .on('get', this.getPowerState.bind(this))
+                .on('set', this.setPowerState.bind(this));
 
-
-        return [switchService];
+        this.informationService = informationService;
+        this.switchService = switchService;
+        return [informationService, switchService];
     }
 };
