@@ -1,6 +1,6 @@
 {
   "name": "homebridge-epson-projector",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Jackie Yang",
   "description": "EPSON Projector automation, via Homebridge for the impatient.",
   "license": "MIT",
